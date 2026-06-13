@@ -1,484 +1,1135 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Professional portfolio showcasing my work, skills, and services">
-    <title>Professional Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="responsive.css">
-    <!-- Google Fonts - Poppins and Roboto -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-</head>
-<body>
-    <header id="header">
-        <div class="container">
-            <div class="logo">
-                <a href="#home">
-                    <svg class="logo-svg" width="40" height="40" viewBox="0 0 40 40">
-                        <path d="M20 0C8.954 0 0 8.954 0 20s8.954 20 20 20 20-8.954 20-20S31.046 0 20 0zm0 36c-8.837 0-16-7.163-16-16S11.163 4 20 4s16 7.163 16 16-7.163 16-16 16z" fill="#3498db"/>
-                        <path d="M26 12h-6v6h-6v6h6v6h6v-6h6v-6h-6z" fill="#3498db"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>TALHA · Web Developer</title>
+    <meta
+      name="description"
+      content="Portfolio of Talha Shaikh, a BCA Graduate skilled in Java, Python, Web Development, and AI/ML. Passionate about building real-world software projects and innovative solutions."
+    />
+    <meta name="theme-color" content="#020408" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,700;0,900;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script type="text/javascript">
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "x09z7l49j4");
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-JGKMVCNS1X"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-JGKMVCNS1X");
+    </script>
+  </head>
+  <body>
+    <!-- ════════════════════════════════════
+     CINEMATIC BOOT SEQUENCE
+════════════════════════════════════ -->
+    <div id="boot-screen">
+      <canvas id="boot-canvas"></canvas>
+      <div class="boot-ui">
+        <svg viewBox="0 0 100 100" class="boot-hex" aria-hidden="true">
+          <polygon
+            points="50,2 93,26 93,74 50,98 7,74 7,26"
+            fill="none"
+            stroke="var(--cyan)"
+            stroke-width="1.5"
+          />
+          <polygon
+            points="50,12 83,30 83,70 50,88 17,70 17,30"
+            fill="none"
+            stroke="var(--cyan)"
+            stroke-width="0.5"
+            opacity="0.35"
+          />
+          <text
+            x="50"
+            y="59"
+            text-anchor="middle"
+            fill="var(--cyan)"
+            font-family="'Share Tech Mono'"
+            font-size="22"
+            font-weight="700"
+          >
+            T
+          </text>
+        </svg>
+        <div class="boot-lines" id="boot-lines"></div>
+        <div class="boot-bar-wrap">
+          <div class="boot-bar">
+            <div class="boot-fill" id="boot-fill"></div>
+          </div>
+          <span class="boot-pct" id="boot-pct">0%</span>
+        </div>
+        <div class="boot-skip" id="boot-skip" role="button" tabindex="0">
+          PRESS ANY KEY TO SKIP
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div id="cur-dot" aria-hidden="true"></div>
+    <div id="cur-ring" aria-hidden="true"></div>
+
+    <!-- Scroll Progress -->
+    <div id="scroll-prog" aria-hidden="true"></div>
+
+    <!-- ════════════════════════════════════
+     NAVIGATION
+════════════════════════════════════ -->
+    <nav id="nav" role="navigation" aria-label="Main navigation">
+      <div class="nav-logo">
+        <span class="logo-bracket">[</span>Talha<span class="logo-bracket"
+          >]</span
+        >
+      </div>
+
+      <ul class="nav-list" id="nav-list">
+        <li><a href="#hero" class="nav-link" data-label="00">SYSTEM</a></li>
+        <li><a href="#about" class="nav-link" data-label="01">IDENTITY</a></li>
+        <li><a href="#skills" class="nav-link" data-label="02">ARSENAL</a></li>
+        <li>
+          <a href="#projects" class="nav-link" data-label="03">MISSIONS</a>
+        </li>
+        <li><a href="#stats" class="nav-link" data-label="04">METRICS</a></li>
+        <li><a href="#contact" class="nav-link" data-label="05">CONNECT</a></li>
+      </ul>
+
+      <div class="nav-right">
+        <div class="nav-status">
+          <span class="status-pulse"></span>
+          <span>ONLINE</span>
+        </div>
+        <button
+          class="nav-burger"
+          id="nav-burger"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ════════════════════════════════════
+     HERO — Canvas Background + Hologram
+════════════════════════════════════ -->
+    <section id="hero" aria-label="Introduction">
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+
+      <div class="hero-body">
+        <!-- LEFT: Text -->
+        <div class="hero-text">
+          <div class="hero-badge">
+            <span class="badge-blink" aria-hidden="true">▮</span>
+            FULL-STACK WEB DEVLOPER · AVAILABLE
+          </div>
+
+          <h1 class="hero-h1">
+            <span class="h1-line">HELLO,</span>
+            <span class="h1-line h1-name">I'M TALHA</span>
+          </h1>
+
+          <div class="hero-role-line">
+            <span class="role-pre" aria-hidden="true">&gt;&nbsp;</span>
+            <span id="typed-output" aria-live="polite"></span
+            ><span class="typed-cur" aria-hidden="true">█</span>
+          </div>
+
+          <p class="hero-sub">
+            Passionate about creating innovative web applications and AI-driven
+            solutions that deliver <em>performance</em>, <em>efficiency</em>, and
+            <em>real-world value</em>.
+          </p>
+
+          <div class="hero-ctas">
+            <a href="#projects" class="cta-primary mag-btn">
+              <span class="cta-inner">VIEW MISSIONS</span>
+              <div class="cta-glare" aria-hidden="true"></div>
+            </a>
+            <a href="#contact" class="cta-ghost mag-btn">INITIATE CONTACT</a>
+          </div>
+
+          <div class="hero-socials">
+            <a
+              href="https://github.com/TalhaShaikh-1418"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hsoc"
+              title="GitHub — TalhaShaikh-1418"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-label="GitHub">
+                <path
+                  d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/talhashaikh-dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hsoc"
+              title="LinkedIn — talhashaikh-dev"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-label="LinkedIn"
+              >
+                <path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                />
+              </svg>
+            <!-- </a>
+            <a
+              href="https://leetcode.com/u/0007RAM/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hsoc"
+              title="LeetCode — 0007RAM"
+            >
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png"
+                alt="LeetCode"
+                width="18"
+                height="18"
+                style="filter: invert(1)"
+              />
+            </a> -->
+            <a
+              href="https://www.instagram.com/binaryghost_7310"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hsoc"
+              title="InstagTALHA — binaryghost_7310"
+            >
+              <svg viewBox="0 0 24 24" aria-label="Instagram">
+                <defs>
+                  <linearGradient
+                    id="ig-hero"
+                    x1="0%"
+                    y1="100%"
+                    x2="100%"
+                    y2="0%"
+                  >
+                    <stop offset="0%" stop-color="#f09433" />
+                    <stop offset="50%" stop-color="#e6683c" />
+                    <stop offset="100%" stop-color="#dc2743" />
+                  </linearGradient>
+                </defs>
+                <path
+                  fill="url(#ig-hero)"
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- RIGHT: Holographic Portrait -->
+        <div class="hero-portrait" id="portrait-wrap" aria-hidden="true">
+          <div class="holo-ring holo-r1"></div>
+          <div class="holo-ring holo-r2"></div>
+          <div class="holo-ring holo-r3"></div>
+          <div class="holo-particles" id="holo-particles"></div>
+
+          <div class="portrait-frame" id="portrait-frame">
+            <div class="portrait-scanlines"></div>
+            <img
+              src="Talha .jpeg"
+              alt="TALHA— Full-Stack Web-Devloper"
+              class="portrait-img"
+              onerror="
+                this.style.display = 'none';
+                document.getElementById('portrait-fallback').style.display =
+                  'flex';
+              "
+            />
+            <div class="portrait-fallback" id="portrait-fallback">
+              <svg viewBox="0 0 120 140" fill="none" width="120">
+                <circle
+                  cx="60"
+                  cy="45"
+                  r="28"
+                  stroke="var(--cyan)"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M10 140 Q10 95 60 95 Q110 95 110 140"
+                  stroke="var(--cyan)"
+                  stroke-width="1.5"
+                  fill="none"
+                />
+              </svg>
+            </div>
+            <div class="portrait-overlay"></div>
+            <div class="portrait-glitch" id="p-glitch"></div>
+          </div>
+
+          <div class="holo-data">
+            <div class="hd-item">
+              <span class="hd-k">ID</span><span class="hd-v">TALHA</span>
+            </div>
+            <div class="hd-item">
+              <span class="hd-k">ROLE</span><span class="hd-v">WEB DEV</span>
+            </div>
+            <div class="hd-item">
+              <span class="hd-k">STATUS</span
+              ><span class="hd-v hd-green">ACTIVE</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-hint" aria-hidden="true">
+        <div class="sh-arrow"><span></span><span></span></div>
+        <span class="sh-txt">SCROLL TO EXPLORE</span>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════
+     ABOUT — IDENTITY
+════════════════════════════════════ -->
+    <section id="about" class="reveal-section" aria-label="About Talha">
+      <div class="sec-wrap">
+        <span class="sec-tag">// 01 · IDENTITY</span>
+        <h2 class="sec-title">THE <em>DEVELOPER</em><br />BEHIND THE CODE</h2>
+
+        <div class="about-grid">
+          <!-- Bio cards -->
+          <div class="about-bio">
+            <div class="bio-card glass" data-reveal>
+              <span class="bio-card-tag">ABOUT.EXE</span>
+              <p>
+                I'm <strong>Talha Shaikh</strong>, a BCA Graduate and aspiring
+                <strong>Software Developer</strong> assionate about Java, Python,
+                Web Development, and AI/ML. I enjoy building real-world projects,
+                solving problems, and continuously learning new technologies to
+                create impactful digital solutions.
+              </p>
+            </div>
+            <div class="bio-card glass" data-reveal>
+              <span class="bio-card-tag">MISSION.LOG</span>
+              <p>
+                Driven by continuous learning and innovation — building web applications,
+                exploring Artificial Intelligence & Machine Learning, and developing
+                real-world software solutions. Currently strengthening my skills in
+                mastering <strong>Java</strong>,
+                <strong>Python</strong>, and
+                <strong>AI/ML</strong>, and modern web technologies while working on
+                impactful projects.
+              </p>
+            </div>
+            <div class="bio-card glass" data-reveal>
+              <span class="bio-card-tag">PHILOSOPHY.TXT</span>
+              <p>
+                I believe technology should solve real-world problems and make life easier.
+                My goal is to continuously learn, build meaningful web applications,
+                explore AI/ML, and create solutions that deliver value to users while
+                improving my skills as a developer.
+              </p>
+            </div>
+          </div>
+
+          <!-- Stat hexes -->
+          <div class="about-stats-panel">
+            <div class="stat-hex glass" data-reveal data-count="5">
+              <div class="sh-val">0</div>
+              <div class="sh-key">PROJECTS SHIPPED</div>
+            </div>
+            <div
+              class="stat-hex glass"
+              data-reveal
+              data-count="10"
+              data-suffix="+"
+            >
+              <div class="sh-val">0</div>
+              <div class="sh-key">TECHNOLOGIES</div>
+            </div>
+            <div
+              class="stat-hex glass"
+              data-reveal
+              data-count="100"
+              data-suffix="+"
+            >
+              <div class="sh-val">0</div>
+              <div class="sh-key">PROBLEMS SOLVED</div>
+            </div>
+            <div class="stat-hex glass" data-reveal data-count="3">
+              <div class="sh-val">0</div>
+              <div class="sh-key">YEARS GROWING</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timeline -->
+<div class="timeline-wrap">
+  <div class="tl-title">// GROWTH TIMELINE</div>
+  <div class="timeline">
+
+    <div class="tl-node" data-reveal>
+      <div class="tl-yr">2023</div>
+      <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+      <div class="tl-card glass">
+        <h4>PROGRAMMING JOURNEY</h4>
+        <p>
+          Started my coding journey and learned the fundamentals of
+          HTML, CSS, JavaScript, and basic programming concepts.
+        </p>
+      </div>
+    </div>
+
+    <div class="tl-node" data-reveal>
+      <div class="tl-yr">2024</div>
+      <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+      <div class="tl-card glass">
+        <h4>WEB DEVELOPMENT</h4>
+        <p>
+          Built responsive websites and explored backend development
+          using PHP, MySQL, Python, and Flask.
+        </p>
+      </div>
+    </div>
+
+    <div class="tl-node" data-reveal>
+      <div class="tl-yr">2025</div>
+      <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+      <div class="tl-card glass">
+        <h4>PROJECT DEVELOPMENT</h4>
+        <p>
+          Worked on real-world projects, improved problem-solving skills,
+          and strengthened knowledge of Java, Python, databases,
+          and web technologies.
+        </p>
+      </div>
+    </div>
+
+    <div class="tl-node" data-reveal>
+      <div class="tl-yr">2026</div>
+      <div class="tl-dot-wrap"><div class="tl-dot active"></div></div>
+      <div class="tl-card glass">
+        <h4>AI/ML & ADVANCED DEVELOPMENT</h4>
+        <p>
+          Exploring Artificial Intelligence, Machine Learning,
+          Spring Boot, and modern software development while building
+          innovative and impactful applications.
+        </p>
+      </div>
+    </div>
+
+    <div class="tl-node" data-reveal>
+      <div class="tl-yr">NEXT</div>
+      <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+      <div class="tl-card glass">
+        <h4>PROFESSIONAL DEVELOPER</h4>
+        <p>
+          Aiming to build scalable software solutions, contribute to
+          innovative products, and grow as a skilled software professional.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+    <!-- ════════════════════════════════════
+     SKILLS — GALAXY + GRID
+════════════════════════════════════ -->
+    <section id="skills" class="reveal-section" aria-label="Skills">
+      <div class="sec-wrap">
+        <span class="sec-tag">// 02 · ARSENAL</span>
+        <h2 class="sec-title">TECHNOLOGY<br /><em>ECOSYSTEM</em></h2>
+
+        <!-- Interactive galaxy canvas -->
+        <div class="skill-galaxy-wrap">
+          <canvas id="skill-canvas" aria-hidden="true"></canvas>
+          <div class="skill-tooltip" id="skill-tooltip" role="tooltip"></div>
+        </div>
+
+        <!-- Skill cards grid (injected by JS) -->
+        <div
+          class="skill-grid"
+          id="skill-grid"
+          aria-label="Skill proficiency cards"
+        ></div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════
+     PROJECTS — 3D SHOWCASE
+════════════════════════════════════ -->
+    <section id="projects" class="reveal-section" aria-label="Projects">
+      <div class="sec-wrap">
+        <span class="sec-tag">// 03 · MISSIONS</span>
+        <h2 class="sec-title">DEPLOYED<br /><em>OPERATIONS</em></h2>
+
+        <div class="projects-3d">
+          <!-- PROJECT 01 -->
+          <div class="proj-item" data-reveal>
+            <div class="proj-shell" data-tilt>
+              <div class="proj-num">01</div>
+              <div class="proj-img-zone">
+                <img
+                  src="After 12th.png"
+                  alt="Movies Trending App"
+                  loading="lazy"
+                  onerror="this.parentElement.classList.add('no-img')"
+                />
+                <div class="proj-scanline" aria-hidden="true"></div>
+                <div class="proj-corner tl" aria-hidden="true"></div>
+                <div class="proj-corner tr" aria-hidden="true"></div>
+                <div class="proj-corner bl" aria-hidden="true"></div>
+                <div class="proj-corner br" aria-hidden="true"></div>
+                <div class="proj-hud" aria-hidden="true">
+                  <span>RENDER_OK</span><span>60fps</span>
+                </div>
+              </div>
+              <div class="proj-info">
+                <div class="proj-tags">
+                  <span>HTML</span><span>CSS</span><span>JavaScript</span>
+                </div>
+                <h3 class="proj-title">AFTER 12TH ROADMAP</h3>
+                <p class="proj-desc">
+                    A career guidance website designed to help students explore
+                    opportunities after 12th grade, including courses, career paths,
+                    educational resources, and future planning guidance.
+                </p>
+                <div class="proj-links">
+                  <a
+                    href="https://talhashaikh-1418.github.io/After12thRoadMap/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="pl-live"
+                  >
+                    <span class="pl-dot"></span>LIVE DEMO
+                  </a>
+                  <a
+                    href="https://github.com/TalhaShaikh-1418/After12thRoadMap"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="pl-gh"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      width="13"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"
+                      />
                     </svg>
-                    <span>Portfolio</span>
-                </a>
+                    SOURCE
+                  </a>
+                </div>
+              </div>
             </div>
-            <nav>
-                <button class="nav-toggle" aria-label="Toggle navigation">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <ul class="nav-menu">
-                    <li><a href="#home" class="nav-link active">Home</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#projects" class="nav-link">Projects</a></li>
-                    <li><a href="#services" class="nav-link">Services</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
-            </nav>
+          </div>
+
+          <!-- PROJECT 02 -->
+          <div class="proj-item" data-reveal>
+            <div class="proj-shell" data-tilt>
+              <div class="proj-num">02</div>
+              <div class="proj-img-zone">
+                <img
+                  src="ApnaKhet.png"
+                  alt="Smart Resume Builder"
+                  loading="lazy"
+                  onerror="this.parentElement.classList.add('no-img')"
+                />
+                <div class="proj-scanline" aria-hidden="true"></div>
+                <div class="proj-corner tl"></div>
+                <div class="proj-corner tr"></div>
+                <div class="proj-corner bl"></div>
+                <div class="proj-corner br"></div>
+                <div class="proj-hud" aria-hidden="true">
+                  <span>AI_ACTIVE</span><span>v2.0</span>
+                </div>
+              </div>
+              <div class="proj-info">
+                <div class="proj-tags">
+                  <span>PYTHON</span><span>HTML</span><span>CSS</span><span>MYSQL</span>
+                </div>
+                <h3 class="proj-title">ApnaKhet – Farmer to Buyer Marketplace</h3>
+                <p class="proj-desc">
+                  A web-based platform that enables farmers to sell crops directly to buyers. Built with Flask and MySQL, featuring user authentication, crop management, buyer browsing, and admin dashboard.
+                </p>
+                <div class="proj-links">
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="pl-live"
+                  >
+                    <span class="pl-dot"></span>LIVE DEMO
+                  </a>
+                  <a
+                    href="https://github.com/TalhaShaikh-1418/ApnaKhet"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="pl-gh"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      width="13"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"
+                      />
+                    </svg>
+                    SOURCE
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PROJECT 03 -->
+          <div class="proj-item" data-reveal>
+            <div class="proj-shell" data-tilt>
+              <div class="proj-num">03</div>
+              <div class="proj-img-zone">
+                <img
+                  src="AI PLACEMENT PREDICTOR.png"
+                  alt="Digital Library Manager"
+                  loading="lazy"
+                  onerror="this.parentElement.classList.add('no-img')"
+                />
+                <div class="proj-scanline" aria-hidden="true"></div>
+                <div class="proj-corner tl"></div>
+                <div class="proj-corner tr"></div>
+                <div class="proj-corner bl"></div>
+                <div class="proj-corner br"></div>
+                <div class="proj-hud" aria-hidden="true">
+                  <span>DB_ONLINE</span><span>Flask</span>
+                </div>
+              </div>
+              <div class="proj-info">
+                <div class="proj-tags">
+                  <span>Python</span><span>Flask</span><span>HTML</span><span>CSS</span>
+                </div>
+                <h3 class="proj-title">AI PLACEMENT PREDICTOR</h3>
+                <p class="proj-desc">
+                    An AI-powered placement prediction system that analyzes academic performance,
+                    technical skills, and project experience to estimate placement opportunities
+                    and provide career insights.
+                </p>
+                <div class="proj-links">
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="pl-live"
+                  >
+                    <span class="pl-dot"></span>LIVE DEMO
+                  </a>
+                  <a
+                    href="https://github.com/TalhaShaikh-1418/AI-Placement-Prediction-Resume-Analyzer"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="pl-gh"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      width="13"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"
+                      />
+                    </svg>
+                    SOURCE
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PROJECT 04 -->
+          <div class="proj-item" data-reveal>
+            <div class="proj-shell" data-tilt>
+              <div class="proj-num">04</div>
+              <div class="proj-img-zone">
+                <img
+                  src="PortFolio-11-25-2025.png"
+                  alt="Personal Portfolio Website"
+                  loading="lazy"
+                  onerror="this.parentElement.classList.add('no-img')"
+                />
+                <div class="proj-scanline" aria-hidden="true"></div>
+                <div class="proj-corner tl"></div>
+                <div class="proj-corner tr"></div>
+                <div class="proj-corner bl"></div>
+                <div class="proj-corner br"></div>
+                <div class="proj-hud" aria-hidden="true">
+                  <span>HTML_RENDER</span><span>v1.0</span>
+                </div>
+              </div>
+              <div class="proj-info">
+                <div class="proj-tags">
+                  <span>HTML</span><span>CSS</span><span>JavaScript</span>
+                </div>
+                <h3 class="proj-title">PORTFOLIO SYSTEM</h3>
+                <p class="proj-desc">
+                  Matrix-effect developer portfolio with smooth cinematic
+                  transitions and animated interactions.
+                </p>
+                <div class="proj-links">
+                  <a
+                    href="https://talhashaikh-1418.github.io/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="pl-live"
+                  >
+                    <span class="pl-dot"></span>LIVE DEMO
+                  </a>
+                  <a
+                    href="https://github.com/TalhaShaikh-1418/TalhaShaikh-1418.github.io"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="pl-gh"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      width="13"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"
+                      />
+                    </svg>
+                    SOURCE
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-    </header>
+      </div>
+    </section>
 
-    <main>
-        <!-- Home Section -->
-        <section id="home" class="section hero">
-            <div class="container">
-                <div class="hero-content">
-                    <h1 class="animate-fade-in">Hi, I'm <span class="highlight">Talha Shaikh</span></h1>
-                    <h2 class="animate-fade-in">Web Developer</h2>
-                    <p class="animate-fade-in">Creating elegant solutions through code.</p>
-                    <div class="hero-cta animate-fade-in">
-                        <a href="#projects" class="btn btn-primary">View My Work</a>
-                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <!-- Decorative element using CSS -->
-                    <div class="profile-photo">
-                        <img src="Talha.jpg" alt="My Photo">
-                    </div>
-                    
-                </div>
-            </div>
-        </section>
+    <!-- ════════════════════════════════════
+     STATS / METRICS DASHBOARD
+════════════════════════════════════ -->
+    <section id="stats" class="reveal-section" aria-label="Stats and metrics">
+      <div class="sec-wrap">
+        <span class="sec-tag">// 04 · METRICS</span>
+        <h2 class="sec-title">PERFORMANCE<br /><em>DASHBOARD</em></h2>
 
-        <!-- About Section -->
-        <section id="about" class="section about">
-            <div class="container">
-                <div class="section-header">
-                    <h2>About Me</h2>
-                    <div class="section-divider"></div>
-                </div>
-                <div class="about-content">
-                    <div class="about-text">
-                        <h3>Who I Am</h3>
-                        <p>I'm a dedicated and curious web development student currently pursuing my BCA (3rd Year). I have a strong interest in coding and designing responsive, user-friendly websites. While I may not have professional experience yet, I'm constantly learning and building my skills through personal projects and college assignments.</p>
-                        
-                        <h3>My Journey</h3>
-                        <p>My journey in web development began during my first year of BCA, when I was introduced to the basics of HTML and CSS. As I explored more, I developed a strong interest in creating websites and understanding how they work. Over time, I started learning JavaScript, PHP, and MySQL through college projects, self-study, and online tutorials.
-I enjoy building small projects and experimenting with different designs and functionalities. Every day, I try to improve my skills and stay updated with new tools and technologies in the web development world.</p>
-                        <h3>My Goal</h3>
-                        <p>My goal is to become a skilled full-stack web developer who can handle both front-end and back-end development. I aim to gain practical experience by working on real-world projects, internships, and freelance opportunities.
-In the future, I plan to either pursue higher education in Computer Science (like MCA) or begin my professional career in a tech company where I can continue to learn, grow, and contribute to meaningful projects.</p>
-                    </div>
-                    <div class="skills-container">
-                        <h3>My Skills</h3>
-                        <div class="skills-grid">
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span>HTML5 & CSS3</span>
-                                    <span>70%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-progress="70"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span>JavaScript</span>
-                                    <span>30%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-progress="30"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span>Responsive Design</span>
-                                    <span>60%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-progress="60"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span>Java</span>
-                                    <span>50%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-progress="50"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span>C#</span>
-                                    <span>20%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-progress="20"></div>
-                                </div>
-                            </div>
-                              <div class="skill-item">
-                                <div class="skill-info">
-                                    <span>Python</span>
-                                    <span>0%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-progress="10"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div class="metrics-grid">
 
-        <!-- Projects Section -->
-        <section id="projects" class="section projects">
-            <div class="container">
-                <div class="section-header">
-                    <h2>My Projects</h2>
-                    <div class="section-divider"></div>
-                </div>
-                <div class="projects-filters">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="web">Web Design</button>
-                    <button class="filter-btn" data-filter="app">Web Apps</button>
-                    <button class="filter-btn" data-filter="other">Other</button>
-                </div>
-                <div class="projects-grid">
-                    <!-- Project 1 -->
-                    <div class="project-card" data-category="web">
-                        <div class="project-img">
-                            <!-- Placeholder for project image - will be styled with CSS -->
-                            <div class="project-placeholder">
-                                <i class="fas fa-laptop-code"></i>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <h3>After 12th Roadmap</h3>
-                            <p>A career guidance website for students to explore different paths after 12th, including college courses, career tips, and resources.</p>
-                            <div class="project-tech">
-                                <span>HTML</span>
-                                <span>CSS</span>
-                                <span>JavaScript</span>
-                            </div>
-                            <div class="project-links">
-                                <a href=" https://talhashaikh-1418.github.io/After12thRoadMap/" class="btn btn-sm">View Live</a>
-                                <a href="https://github.com/TalhaShaikh-1418/After12thRoadMap.git" class="btn btn-sm btn-outline">Source Code</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Project 2 -->
-                    <div class="project-card" data-category="app">
-                        <div class="project-img">
-                            <!-- Placeholder for project image - will be styled with CSS -->
-                            <div class="project-placeholder">
-                                <i class="fas fa-mobile-alt"></i>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <h3>Task Manager App</h3>
-                            <p>A task manager application that helps users organize their daily responsibilities with features like drag-and-drop, priority setting, and reminders.</p>
-                            <div class="project-tech">
-                                <span>HTML</span>
-                                <span>CSS</span>
-                                <span>JavaScript</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://talhashaikh-1418.github.io/Task-manager/" class="btn btn-sm">View Live</a>
-                                <a href="https://github.com/TalhaShaikh-1418/Task-manager.git" class="btn btn-sm btn-outline">Source Code</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Project 3 -->
-                    <div class="project-card" data-category="web">
-                        <div class="project-img">
-                            <!-- Placeholder for project image - will be styled with CSS -->
-                            <div class="project-placeholder">
-                                <i class="fas fa-globe"></i>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <h3>Restaurant Website</h3>
-                            <p>A modern website for a local restaurant featuring an interactive menu, reservation system, and testimonials section.</p>
-                            <div class="project-tech">
-                                <span>HTML</span>
-                                <span>CSS</span>
-                                <span>JavaScript</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="btn btn-sm">View Live</a>
-                                <a href="#" class="btn btn-sm btn-outline">Source Code</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Project 4 -->
-                    <div class="project-card" data-category="other">
-                        <div class="project-img">
-                            <!-- Placeholder for project image - will be styled with CSS -->
-                            <div class="project-placeholder">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <h3>Dashboard UI</h3>
-                            <p>A clean, intuitive dashboard interface for data visualization with customizable widgets and real-time updates.</p>
-                            <div class="project-tech">
-                                <span>HTML</span>
-                                <span>CSS</span>
-                                <span>JavaScript</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="btn btn-sm">View Live</a>
-                                <a href="#" class="btn btn-sm btn-outline">Source Code</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Project 5 -->
-                    <div class="project-card" data-category="app">
-                        <div class="project-img">
-                            <!-- Placeholder for project image - will be styled with CSS -->
-                            <div class="project-placeholder">
-                                <i class="fas fa-calendar-alt"></i>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <h3>Appointment Scheduling App</h3>
-                            <p>A web application that allows users to schedule, manage, and receive reminders for appointments with a user-friendly calendar interface.</p>
-                            <div class="project-tech">
-                                <span>HTML</span>
-                                <span>CSS</span>
-                                <span>JavaScript</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="btn btn-sm">View Live</a>
-                                <a href="#" class="btn btn-sm btn-outline">Source Code</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Project 6 -->
-                    <div class="project-card" data-category="other">
-                        <div class="project-img">
-                            <!-- Placeholder for project image - will be styled with CSS -->
-                            <div class="project-placeholder">
-                                <i class="fas fa-palette"></i>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <h3>Color Palette Generator</h3>
-                            <p>A tool that generates harmonious color palettes for designers and developers with export options in various formats.</p>
-                            <div class="project-tech">
-                                <span>HTML</span>
-                                <span>CSS</span>
-                                <span>JavaScript</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="btn btn-sm">View Live</a>
-                                <a href="#" class="btn btn-sm btn-outline">Source Code</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <div
+    class="metric-card glass"
+    data-reveal
+    data-count="5"
+  >
+    <span class="mc-icon">🚀</span>
+    <span class="mc-val">0</span>
+    <div class="mc-label">Projects Built</div>
+    <div class="mc-sub">Web Apps · AI/ML · Software</div>
+  </div>
 
-        <!-- Services Section -->
-        <section id="services" class="section services">
-            <div class="container">
-                <div class="section-header">
-                    <h2>My Services</h2>
-                    <div class="section-divider"></div>
-                </div>
-                <div class="services-grid">
-                    <!-- Service 1 -->
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <h3>Web Development</h3>
-                        <p>Custom website development tailored to your specific needs, ensuring a unique online presence for your business or personal brand.</p>
-                        <ul class="service-features">
-                            <li>Responsive Design</li>
-                            <li>Cross-Browser Compatibility</li>
-                            <li>Performance Optimization</li>
-                            <li>SEO-Friendly Structure</li>
-                        </ul>
-                    </div>
-                    <!-- Service 2 -->
-                   
-                    <!-- Service 3 -->
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <h3>Responsive Web Design</h3>
-                        <p>Ensuring your website looks and functions perfectly across all devices, from smartphones to desktop computers.</p>
-                        <ul class="service-features">
-                            <li>Mobile-First Approach</li>
-                            <li>Flexible Layouts</li>
-                            <li>Touch-Friendly Interfaces</li>
-                            <li>Consistent User Experience</li>
-                        </ul>
-                    </div>
-                    <!-- Service 4 -->
-                    
-                </div>
-            </div>
-        </section>
+  <div
+    class="metric-card glass"
+    data-reveal
+    data-count="10"
+    data-suffix="+"
+  >
+    <span class="mc-icon">🛠</span>
+    <span class="mc-val">0</span>
+    <div class="mc-label">Technologies</div>
+    <div class="mc-sub">Frontend · Backend · Database</div>
+  </div>
 
-        <!-- Contact Section -->
-        <section id="contact" class="section contact">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Get In Touch</h2>
-                    <div class="section-divider"></div>
-                </div>
-                <div class="contact-content">
-                    <div class="contact-info">
-                        <h3>Let's Connect</h3>
-                        <p>Feel free to reach out if you're looking for a developer, have a question, or just want to connect.</p>
-                        
-                        <div class="contact-details">
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
-                                <div class="contact-text">
-                                    <h4>Email</h4>
-                                    <p>talhashaikh3408@gmail.com</p>
-                                </div>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-phone"></i>
-                                </div>
-                                <div class="contact-text">
-                                    <h4>Phone</h4>
-                                    <p>+91 7058570828</p>
-                                </div>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </div>
-                                <div class="contact-text">
-                                    <h4>Location</h4>
-                                    <p>India, Maharashtra, Kolhapur</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="social-links">
-                            <a href="#" class="social-link" aria-label="GitHub profile">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/in/talha-shaikh-31691a1a4?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-link" aria-label="LinkedIn profile">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <a href="#" class="social-link" aria-label="Twitter profile">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#" class="social-link" aria-label="Dribbble profile">
-                                <i class="fab fa-dribbble"></i>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-form-container">
-                        <h3>Send Me a Message</h3>
-                        <form id="contact-form" class="contact-form">
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" id="name" name="name" required>
-                                <span class="error-message"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" name="email" required>
-                                <span class="error-message"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="subject">Subject</label>
-                                <input type="text" id="subject" name="subject" required>
-                                <span class="error-message"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Message</label>
-                                <textarea id="message" name="message" rows="5" required></textarea>
-                                <span class="error-message"></span>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Send Message</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+  <div
+    class="metric-card glass"
+    data-reveal
+    data-count="3"
+  >
+    <span class="mc-icon">📈</span>
+    <span class="mc-val">0</span>
+    <div class="mc-label">Years Learning</div>
+    <div class="mc-sub">Growing · Building · Learning</div>
+  </div>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <a href="#home">
-                        <svg class="logo-svg" width="30" height="30" viewBox="0 0 40 40">
-                            <path d="M20 0C8.954 0 0 8.954 0 20s8.954 20 20 20 20-8.954 20-20S31.046 0 20 0zm0 36c-8.837 0-16-7.163-16-16S11.163 4 20 4s16 7.163 16 16-7.163 16-16 16z" fill="#3498db"/>
-                            <path d="M26 12h-6v6h-6v6h6v6h6v-6h6v-6h-6z" fill="#3498db"/>
-                        </svg>
-                        <span>Portfolio</span>
-                    </a>
-                </div>
-                <nav class="footer-nav">
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </nav>
-                <div class="footer-social">
-                    <a href="https://github.com/TalhaShaikh-1418" aria-label="GitHub profile">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="linkedin.com/in/talha-shaikh-31691a1a4" aria-label="LinkedIn profile">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="#" aria-label="Twitter profile">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" aria-label="Dribbble profile">
-                        <i class="fab fa-dribbble"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2023 Talha Shaikh. All Rights Reserved.</p>
-            </div>
+  <div
+    class="metric-card glass"
+    data-reveal
+    data-count="2"
+  >
+    <span class="mc-icon">🤖</span>
+    <span class="mc-val">0</span>
+    <div class="mc-label">AI/ML Projects</div>
+    <div class="mc-sub">Prediction · Analysis</div>
+  </div>
+
+</div>
+
+        <!-- External profiles -->
+        <div class="profiles-panel" data-reveal>
+          <div class="pp-title">// EXTERNAL PROFILES</div>
+          <div class="pp-grid">
+            <!-- <a
+              href="https://leetcode.com/u/0007RAM/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="pp-card glass"
+            >
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png"
+                alt="LeetCode"
+                width="24"
+                height="24"
+                style="filter: invert(1); flex-shrink: 0"
+              />
+              <div><strong>LeetCode</strong><span>0007RAM</span></div>
+              <span class="pp-arr" aria-hidden="true">↗</span>
+            </a> -->
+
+            <a
+              href="www.linkedin.com/in/talhashaikh-dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="pp-card glass"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="#0A66C2"
+                width="24"
+                aria-hidden="true"
+                style="flex-shrink: 0"
+              >
+                <path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                />
+              </svg>
+              <div><strong>LinkedIn</strong><span>Talha Shaikh</span></div>
+              <span class="pp-arr" aria-hidden="true">↗</span>
+            </a>
+
+            <a
+              href="https://github.com/TalhaShaikh-1418"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="pp-card glass"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="white"
+                width="24"
+                aria-hidden="true"
+                style="flex-shrink: 0"
+              >
+                <path
+                  d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"
+                />
+              </svg>
+              <div><strong>GitHub</strong><span>TalhaShaikh-1418</span></div>
+              <span class="pp-arr" aria-hidden="true">↗</span>
+            </a>
+
+            <a
+              href="https://www.instagram.com/binaryghost_7310"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="pp-card glass"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="24"
+                aria-hidden="true"
+                style="flex-shrink: 0"
+              >
+                <defs>
+                  <linearGradient
+                    id="ig-stats"
+                    x1="0%"
+                    y1="100%"
+                    x2="100%"
+                    y2="0%"
+                  >
+                    <stop offset="0%" stop-color="#f09433" />
+                    <stop offset="50%" stop-color="#e6683c" />
+                    <stop offset="100%" stop-color="#dc2743" />
+                  </linearGradient>
+                </defs>
+                <path
+                  fill="url(#ig-stats)"
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
+                />
+              </svg>
+              <div><strong>Instagram</strong><span>binaryghost_7310</span></div>
+              <span class="pp-arr" aria-hidden="true">↗</span>
+            </a>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════
+     CONTACT
+════════════════════════════════════ -->
+    <section id="contact" class="reveal-section" aria-label="Contact">
+      <div class="sec-wrap">
+        <span class="sec-tag">// 05 · CONNECT</span>
+        <h2 class="sec-title">ESTABLISH<br /><em>CONNECTION</em></h2>
+
+        <div class="contact-layout">
+          <!-- Left: meta info + terminal -->
+          <div class="contact-meta" data-reveal>
+            <div class="cm-card glass">
+              <div class="cm-status">
+                <span class="status-pulse"></span>
+                <span>AVAILABLE FOR NEW MISSIONS</span>
+              </div>
+              <p>
+                Interested in collaborating, discussing a project, or exploring new
+                opportunities? Feel free to reach out. I'm always excited to learn,
+                connect, and work on innovative ideas.
+              </p>
+              <div class="cm-info-row">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="var(--cyan)"
+                  stroke-width="2"
+                  width="16"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12,6 12,12 16,14" />
+                </svg>
+                <span>Response time: &lt; 24 hours</span>
+              </div>
+            </div>
+
+            <!-- Terminal widget -->
+            <div class="terminal-window glass" data-reveal>
+              <div class="tw-header">
+                <div class="tw-dots" aria-hidden="true">
+                  <span></span><span></span><span></span>
+                </div>
+                <span class="tw-title">terminal.sh</span>
+              </div>
+              <div class="tw-body">
+                <div class="tw-line">
+                  <span class="tw-prompt">talha@system:~$</span>
+                  <span class="tw-cmd">whoami</span>
+                </div>
+                <div class="tw-line tw-out">Web Developer & AI/ML Enthusiast</div>
+                <div class="tw-line">
+                  <span class="tw-prompt">talha@system:~$</span>
+                  <span class="tw-cmd">status --check</span>
+                </div>
+                <div class="tw-line tw-out tw-green">
+                  Available for projects ✓
+                </div>
+                <div class="tw-line">
+                  <span class="tw-prompt">talha@system:~$</span>
+                  <span class="tw-cmd">uptime</span>
+                </div>
+                <div class="tw-line tw-out">3 years learning, 5+ projects, ∞ ideas</div>
+                <div class="tw-line">
+                  <span class="tw-prompt">talha@system:~$</span>
+                  <span class="tw-cursor-blink" aria-hidden="true">█</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: contact form -->
+          <form
+            class="contact-form glass"
+            id="contactForm"
+            data-reveal
+            novalidate
+          >
+            <span class="cf-header">SEND_MESSAGE.EXE</span>
+
+            <div class="cf-row">
+              <div class="cf-group">
+                <label for="from_name">NAME</label>
+                <input
+                  type="text"
+                  id="from_name"
+                  name="from_name"
+                  placeholder="Your name"
+                  required
+                  autocomplete="name"
+                />
+              </div>
+              <div class="cf-group">
+                <label for="from_email">EMAIL</label>
+                <input
+                  type="email"
+                  id="from_email"
+                  name="from_email"
+                  placeholder="your@email.com"
+                  required
+                  autocomplete="email"
+                />
+              </div>
+            </div>
+
+            <div class="cf-group">
+              <label for="message">MESSAGE</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                placeholder="Describe your mission..."
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="cf-submit mag-btn" id="cf-btn">
+              <span id="cf-btn-text">TRANSMIT MESSAGE</span>
+              <div class="cf-loader" id="cf-loader" aria-hidden="true"></div>
+              <div class="cf-glare" aria-hidden="true"></div>
+            </button>
+
+            <div
+              class="cf-msg"
+              id="cf-msg"
+              role="status"
+              aria-live="polite"
+            ></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════
+     FOOTER
+════════════════════════════════════ -->
+    <footer id="footer" role="contentinfo">
+      <canvas id="foot-canvas" aria-hidden="true"></canvas>
+      <div class="foot-inner">
+        <div class="foot-logo">[TALHA]</div>
+        <p class="foot-copy">
+          Developed by <strong>Talha</strong> · 2026 · Always Learning & Building
+        </p>
+        <p class="foot-legal">© 2026 Talha Shaikh · All rights reserved.</p>
+      </div>
     </footer>
 
-    <!-- Back to top button -->
-    <button id="back-to-top" aria-label="Back to top">
-        <i class="fas fa-arrow-up"></i>
+    <!-- ════════════════════════════════════
+     AI ASSISTANT — TALHA.AI
+════════════════════════════════════ -->
+    <div
+      id="ai-panel"
+      class="ai-panel glass"
+      role="dialog"
+      aria-label="TALHA.AI Assistant"
+      aria-hidden="true"
+    >
+      <div class="ai-header">
+        <div class="ai-avatar" aria-hidden="true">
+          <svg viewBox="0 0 40 40" width="32">
+            <circle
+              cx="20"
+              cy="20"
+              r="18"
+              fill="none"
+              stroke="var(--cyan)"
+              stroke-width="1.5"
+            />
+            <circle cx="20" cy="20" r="6" fill="var(--cyan)" opacity="0.3" />
+            <circle cx="20" cy="20" r="2" fill="var(--cyan)" />
+          </svg>
+        </div>
+        <div>
+          <div class="ai-name">Talha's.AI</div>
+          <div class="ai-sub">Portfolio Intelligence</div>
+        </div>
+        <button class="ai-close" id="ai-close" aria-label="Close AI panel">
+          ✕
+        </button>
+      </div>
+
+      <div class="ai-messages" id="ai-messages" role="log" aria-live="polite">
+        <div class="ai-msg ai-msg-bot">
+          <span
+            >Hi! 👋 I'm TALHA.AI. Ask me about Talha's skills, projects,
+            technologies, learning journey, or portfolio.</span
+          >
+        </div>
+      </div>
+
+      <div class="ai-input-row">
+        <input
+          type="text"
+          id="ai-input"
+          placeholder="Ask about skills, projects..."
+          autocomplete="off"
+          aria-label="Ask TALHA.AI a question"
+        />
+        <button id="ai-send" class="ai-send-btn" aria-label="Send message">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            width="17"
+            aria-hidden="true"
+          >
+            <line x1="22" y1="2" x2="11" y2="13" />
+            <polygon points="22 2 15 22 11 13 2 9 22 2" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <button
+      id="ai-toggle"
+      class="ai-toggle-btn"
+      aria-label="Open TALHA.AI assistant"
+    >
+      <svg viewBox="0 0 40 40" width="24" aria-hidden="true">
+        <circle
+          cx="20"
+          cy="20"
+          r="18"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+        />
+        <circle cx="20" cy="20" r="6" fill="currentColor" opacity="0.4" />
+        <circle cx="20" cy="20" r="2" fill="currentColor" />
+      </svg>
+      <div class="ai-toggle-pulse" aria-hidden="true"></div>
     </button>
 
-    <script src="main.js"></script>
-    <script src="form-validation.js"></script>
-</body>
+    <!-- ════ SCRIPTS ════ -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
