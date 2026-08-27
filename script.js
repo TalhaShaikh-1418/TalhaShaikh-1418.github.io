@@ -107,7 +107,7 @@ document.addEventListener("mousemove", (e) => {
   })();
 
   /* ── boot log messages ── */
-const msgs = [
+  const msgs = [
     ["init", "Initializing TALHA_PORTFOLIO v1.0..."],
     ["ok", "Profile data loaded"],
     ["ok", "Skills database verified"],
@@ -120,7 +120,7 @@ const msgs = [
     ["warn", "Connecting AI assistant (TALHA.AI)..."],
     ["ok", "TALHA.AI core loaded — ready"],
     ["ok", "All systems operational — launching ✓"],
-];
+  ];
 
   let pct = 0,
     msgIdx = 0,
@@ -460,14 +460,14 @@ function initTyped() {
   const el = $("typed-output");
   if (!el) return;
   const words = [
-  "web development projects.",
-  "AI-powered applications.",
-  "machine learning solutions.",
-  "responsive websites.",
-  "full-stack systems.",
-  "creative digital experiences.",
-  "real-world software products.",
-];
+    "web development projects.",
+    "AI-powered applications.",
+    "machine learning solutions.",
+    "responsive websites.",
+    "full-stack systems.",
+    "creative digital experiences.",
+    "real-world software products.",
+  ];
   let wi = 0,
     ci = 0,
     del = false;
@@ -889,59 +889,59 @@ function initSkillGrid() {
   const grid = $("skill-grid");
   if (!grid) return;
 
-const SKILLS = [
-  {
-    name: "HTML5",
-    img: "https://cdn-icons-png.flaticon.com/512/732/732212.png",
-    pct: "90%",
-  },
-  {
-    name: "CSS3",
-    img: "https://cdn-icons-png.flaticon.com/512/732/732190.png",
-    pct: "85%",
-  },
-  {
-    name: "JavaScript",
-    img: "https://cdn-icons-png.flaticon.com/512/5968/5968292.png",
-    pct: "80%",
-  },
-  {
-    name: "Java",
-    img: "https://cdn-icons-png.flaticon.com/512/226/226777.png",
-    pct: "80%",
-  },
-  {
-    name: "Python",
-    img: "https://cdn-icons-png.flaticon.com/512/5968/5968350.png",
-    pct: "75%",
-  },
-  {
-    name: "PHP",
-    img: "https://cdn-icons-png.flaticon.com/512/5968/5968332.png",
-    pct: "70%",
-  },
-  {
-    name: "MySQL",
-    img: "https://cdn-icons-png.flaticon.com/512/919/919836.png",
-    pct: "75%",
-  },
-  {
-    name: "Flask",
-    img: "https://cdn-icons-png.flaticon.com/512/5968/5968705.png",
-    pct: "70%",
-  },
-  {
-    name: "GitHub",
-    img: "https://cdn-icons-png.flaticon.com/512/733/733553.png",
-    pct: "80%",
-    inv: true,
-  },
-  {
-    name: "AI / ML",
-    img: "https://cdn-icons-png.flaticon.com/512/2103/2103633.png",
-    pct: "65%",
-  },
-];
+  const SKILLS = [
+    {
+      name: "HTML5",
+      img: "https://cdn-icons-png.flaticon.com/512/732/732212.png",
+      pct: "90%",
+    },
+    {
+      name: "CSS3",
+      img: "https://cdn-icons-png.flaticon.com/512/732/732190.png",
+      pct: "85%",
+    },
+    {
+      name: "JavaScript",
+      img: "https://cdn-icons-png.flaticon.com/512/5968/5968292.png",
+      pct: "80%",
+    },
+    {
+      name: "Java",
+      img: "https://cdn-icons-png.flaticon.com/512/226/226777.png",
+      pct: "80%",
+    },
+    {
+      name: "Python",
+      img: "https://cdn-icons-png.flaticon.com/512/5968/5968350.png",
+      pct: "75%",
+    },
+    {
+      name: "PHP",
+      img: "https://cdn-icons-png.flaticon.com/512/5968/5968332.png",
+      pct: "70%",
+    },
+    {
+      name: "MySQL",
+      img: "https://cdn-icons-png.flaticon.com/512/919/919836.png",
+      pct: "75%",
+    },
+    {
+      name: "Flask",
+      img: "https://cdn-icons-png.flaticon.com/512/5968/5968705.png",
+      pct: "70%",
+    },
+    {
+      name: "GitHub",
+      img: "https://cdn-icons-png.flaticon.com/512/733/733553.png",
+      pct: "80%",
+      inv: true,
+    },
+    {
+      name: "AI / ML",
+      img: "https://cdn-icons-png.flaticon.com/512/2103/2103633.png",
+      pct: "65%",
+    },
+  ];
 
   SKILLS.forEach((s) => {
     const div = document.createElement("div");
@@ -1037,9 +1037,9 @@ function initContact() {
      6. Uncomment:  await emailjs.sendForm(...)  line
      7. Remove or comment out the fake 1.8s delay line
   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-const EMAILJS_PUBLIC_KEY = "T8WTkXXJtVnOAe5l6";
-const EMAILJS_SERVICE_ID = "service_ygfo12l";
-const EMAILJS_TEMPLATE_ID = "template_i8p59zw";
+  const EMAILJS_PUBLIC_KEY = "T8WTkXXJtVnOAe5l6";
+  const EMAILJS_SERVICE_ID = "service_ygfo12l";
+  const EMAILJS_TEMPLATE_ID = "template_i8p59zw";
 
   emailjs.init(EMAILJS_PUBLIC_KEY);
 
